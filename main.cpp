@@ -2,7 +2,10 @@
 
 int main()
 {
-    Solution_1::print_solution({3,5}, 1000);
+        Stopwatch stopwatch;
+        stopwatch.start();
+        Solution_1::print_solution({3,5},1000);
+        stopwatch.stop();
 
     return 0;
 }
