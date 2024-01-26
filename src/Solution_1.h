@@ -3,18 +3,30 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class Solution_1 {
 public:
-    static void print_solution(std::vector<double> number, double limit)
+    static void print_solution(std::vector<int> number, int limit)
     {
-        double sum = 0;
+        std::vector<int> multiples;
+        int sum = 0;
         for (int i = 0; i<number.size(); i++) {
             for (int j = 1; number[i]*j<limit; j++) {
-                sum += number[i]*j;
+                multiples.push_back(number[i]*j);
             }
+        }
+        for (int i = 0; i<multiples.size(); i++) {
+            std::sort(multiples.begin(), multiples.end());
+            multiples.erase(
+                    std::unique(multiples.begin(), multiples.end()),
+                    multiples.end());
+        }
+        for (int i = 0; i<multiples.size(); i++) {
+            sum += multiples[i];
         }
         std::cout << sum << std::endl;
     }
 };
+
 #endif //PROJECTEULERSOLUTIONS_SOLUTION_1_H
