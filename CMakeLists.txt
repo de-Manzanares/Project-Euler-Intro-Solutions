@@ -5,5 +5,4 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(src)
 
-add_executable(ProjectEulerSolutions main.cpp
-        src/Solution_1.cpp)
+add_executable(ProjectEulerSolutions main.cpp)
