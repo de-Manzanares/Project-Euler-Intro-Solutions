@@ -11,5 +11,6 @@
 #include "Solution_7.h"
 #include "Solution_8.h"
 #include "Solution_9.h"
+#include "Solution_10.h"
 
 #endif //PROJECTEULERSOLUTIONS_SOLUTION_ALL_H
