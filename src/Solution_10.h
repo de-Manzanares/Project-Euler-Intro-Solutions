@@ -14,8 +14,8 @@ public:
 
         for (number = 3; generatePrimes; number++) {
             provenComposite = false;
-            for (int i = 0; i<primeList.size() && !provenComposite; i++) {
-                hasPrimeFactor = (number%primeList[i]==0);
+            for (int i = 0; i < primeList.size() && !provenComposite; i++) {
+                hasPrimeFactor = (number % primeList[i] == 0);
                 if (hasPrimeFactor) {
                     provenComposite = true;
                 }
@@ -23,12 +23,12 @@ public:
             if (!provenComposite) {
                 primeList.push_back(number);
             }
-            generatePrimes = number<SIZE_MAX && primeList.back()<ceiling;
+            generatePrimes = number < SIZE_MAX && primeList.back() < ceiling;
         }
-        if (primeList.back()>ceiling) {
+        if (primeList.back() > ceiling) {
             primeList.pop_back();
         }
-        for (int i = 0; i<primeList.size(); i++) {
+        for (int i = 0; i < primeList.size(); i++) {
             sum += primeList[i];
         }
         std::cout << sum << std::endl;

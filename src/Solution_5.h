@@ -12,17 +12,17 @@ public:
         bool failed;
         int j;
 
-        for (size_t i = (20*19);
-             i<static_cast<size_t>(pow(2, 64)) && !found;
+        for (size_t i = (20 * 19);
+             i < static_cast<size_t>(pow(2, 64)) && !found;
              i++) {
             failed = false;
             j = 20;
-            while (!found && !failed && j>0) {
-                if (i%j!=0) {
+            while (!found && !failed && j > 0) {
+                if (i % j != 0) {
                     failed = true;
                 }
                 j--;
-                if (j==1 && !failed) {
+                if (j == 1 && !failed) {
                     found = true;
                 }
             }

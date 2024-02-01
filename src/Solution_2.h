@@ -12,21 +12,21 @@ public:
         std::vector<int> evenFibonacciNumbers;
 
         // Get Fibonacci sequence up to 4x10^6
-        for (int i = 0; fibonacciSequence.back()<4'000'000; i++) {
+        for (int i = 0; fibonacciSequence.back() < 4'000'000; i++) {
             fibonacciSequence.push_back(
-                    fibonacciSequence[i]+fibonacciSequence[i+1]);
+                    fibonacciSequence[i] + fibonacciSequence[i + 1]);
         }
-        if (fibonacciSequence.back()>4'000'000) {
+        if (fibonacciSequence.back() > 4'000'000) {
             fibonacciSequence.pop_back();
         }
         // Get even Fibonacci numbers
-        for (int i: fibonacciSequence) {
-            if (i%2==0) {
+        for (int i : fibonacciSequence) {
+            if (i % 2 == 0) {
                 evenFibonacciNumbers.push_back(i);
             }
         }
         // Sum even Fibonacci numbers
-        for (int evenFibonacciNumber: evenFibonacciNumbers) {
+        for (int evenFibonacciNumber : evenFibonacciNumbers) {
             sum += evenFibonacciNumber;
         }
         std::cout << sum << std::endl;

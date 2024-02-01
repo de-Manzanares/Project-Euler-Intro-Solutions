@@ -34,12 +34,12 @@ public:
                 "05886116467109405077541002256983155200055935729725"
                 "71636269561882670428252483600823257530420752963450";
 
-        for (int i = 0; i<series.size()-(ADJACENT_DIGITS); i++) {
+        for (int i = 0; i < series.size() - (ADJACENT_DIGITS); i++) {
             temporaryProduct = 1;
-            for (int j = 0; j<ADJACENT_DIGITS; j++) {
-                temporaryProduct *= series[i+j]-'0';
+            for (int j = 0; j < ADJACENT_DIGITS; j++) {
+                temporaryProduct *= series[i + j] - '0';
             }
-            if (temporaryProduct>maxProduct) {
+            if (temporaryProduct > maxProduct) {
                 maxProduct = temporaryProduct;
             }
         }

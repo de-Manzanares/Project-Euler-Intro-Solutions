@@ -14,17 +14,17 @@ public:
         int c;
         int j = 0;
 
-        for (int a = 1; a<=SUM-2; a++) {
+        for (int a = 1; a <= SUM - 2; a++) {
             b = 1;
-            c = SUM-(a+b);
-            for (int i = 0; i<(SUM-(2+j)); i++) {
+            c = SUM - (a + b);
+            for (int i = 0; i < (SUM - (2 + j)); i++) {
                 // std::cout << "a = " << a << "\tb = " << b << "\tc = " << c <<
                 //           "\tsum = " << a+b+c << std::endl;
-                if (a*a+b*b==c*c) {
+                if (a * a + b * b == c * c) {
                     std::cout << "Pythagorean triplet found: "
                               << "a = " << a << "\tb = " << b << "\tc = " << c
                               << std::endl;
-                    std::cout << "Product `abc` = " << a*b*c << std::endl;
+                    std::cout << "Product `abc` = " << a * b * c << std::endl;
                 }
                 b += 1;
                 c -= 1;

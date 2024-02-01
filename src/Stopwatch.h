@@ -16,19 +16,22 @@ public:
         end = std::chrono::steady_clock::now();
         std::cout << std::fixed << std::showpoint << std::setprecision(9)
                   << std::chrono::duration_cast<std::chrono::
-                  nanoseconds>(end-begin).count()
+                                                nanoseconds>(
+                          end - begin).count()
                   << " ns" << "\n"
                   << std::chrono::duration_cast<std::chrono::
-                  microseconds>(end-begin).count()
+                                                microseconds>(
+                          end - begin).count()
                   << " us" << "\n"
                   << std::chrono::duration_cast<std::chrono::
-                  milliseconds>(end-begin).count()
+                                                milliseconds>(
+                          end - begin).count()
                   << " ms" << "\n"
                   << std::chrono::duration_cast<std::chrono::
-                  seconds>(end-begin).count()
+                                                seconds>(end - begin).count()
                   << " s" << "\n"
                   << std::chrono::duration_cast<std::chrono::
-                  minutes>(end-begin).count()
+                                                minutes>(end - begin).count()
                   << " min" << "\n";
     }
 private:
