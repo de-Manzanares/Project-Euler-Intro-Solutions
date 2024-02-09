@@ -1,3 +1,24 @@
+/*
+ * Solution 3
+ * Copyright (c) 2024. de-Manzanares
+ * Contact: git.in.touch@dmanz.org
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * https://projecteuler.net/problem=3
+ */
+
 #ifndef PROJECTEULERSOLUTIONS_SOLUTION_3_H
 #define PROJECTEULERSOLUTIONS_SOLUTION_3_H
 
@@ -8,8 +29,7 @@ class Solution_3 {
 public:
     static void print_solution(size_t number)
     {
-        // supply primes
-        // prime list generated with Wolfram Mathematica
+        // TODO supply primes with variant of Solution_7
         int lengthOfPrimesList = 1000;
         int primes[1000] =
                 {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59,
