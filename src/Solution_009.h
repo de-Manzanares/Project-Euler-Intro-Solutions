@@ -24,7 +24,7 @@
 
 #include <iostream>
 
-class Solution_9 {
+class Solution_009 {
 public:
     static void print_solution()
     {

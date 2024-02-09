@@ -1,5 +1,5 @@
 /*
- * Solution 10
+ * Solution 7
  * Copyright (c) 2024. de-Manzanares
  * Contact: git.in.touch@dmanz.org
  *
@@ -16,19 +16,22 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * https://projecteuler.net/problem=10
+ * https://projecteuler.net/problem=7
  */
 
-#ifndef PROJECTEULERSOLUTIONS_SOLUTION_10_H
-#define PROJECTEULERSOLUTIONS_SOLUTION_10_H
+#ifndef PROJECTEULERSOLUTIONS_SOLUTION_7_H
+#define PROJECTEULERSOLUTIONS_SOLUTION_7_H
 
-class Solution_10 {
+#include <cstdint>
+#include <iostream>
+#include <vector>
+
+class Solution_007 {
 public:
-    static void print_solution(int ceiling)
+    static void print_solution(int nthPrime)
     {
         std::vector<size_t> primeList = {2};
         size_t number;
-        size_t sum = 0;
         bool hasPrimeFactor;
         bool provenComposite;
         bool generatePrimes = true;
@@ -44,16 +47,10 @@ public:
             if (!provenComposite) {
                 primeList.push_back(number);
             }
-            generatePrimes = number < SIZE_MAX && primeList.back() < ceiling;
+            generatePrimes = number < SIZE_MAX && primeList.size() < nthPrime;
         }
-        if (primeList.back() > ceiling) {
-            primeList.pop_back();
-        }
-        for (int i = 0; i < primeList.size(); i++) {
-            sum += primeList[i];
-        }
-        std::cout << sum << std::endl;
+        std::cout << primeList[nthPrime - 1] << std::endl;
     }
 };
 
-#endif //PROJECTEULERSOLUTIONS_SOLUTION_10_H
+#endif //PROJECTEULERSOLUTIONS_SOLUTION_7_H

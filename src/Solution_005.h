@@ -1,5 +1,5 @@
 /*
- * Solution 6
+ * Solution 5
  * Copyright (c) 2024. de-Manzanares
  * Contact: git.in.touch@dmanz.org
  *
@@ -16,29 +16,42 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * https://projecteuler.net/problem=6
+ * https://projecteuler.net/problem=5
  */
 
-#ifndef PROJECTEULERSOLUTIONS_SOLUTION_6_H
-#define PROJECTEULERSOLUTIONS_SOLUTION_6_H
+#ifndef PROJECTEULERSOLUTIONS_SOLUTION_5_H
+#define PROJECTEULERSOLUTIONS_SOLUTION_5_H
 
+#include <cstddef>
 #include <cmath>
 
-class Solution_6 {
+class Solution_005 {
 public:
     static void print_solution()
     {
-        size_t squareOfSum = 0;
-        size_t sumOfSquares = 0;
-        for (size_t i = 1; i <= 100; i++) {
-            squareOfSum += i;
-            sumOfSquares += static_cast<size_t>(pow(static_cast<double>(i), 2));
-        }
-        squareOfSum = static_cast<size_t>(
-                pow(static_cast<double>(squareOfSum), 2));
+        bool found = false;
+        bool failed;
+        int j;
 
-        std::cout << squareOfSum - sumOfSquares << std::endl;
+        for (size_t i = (20 * 19);
+             i < static_cast<size_t>(pow(2, 64)) && !found;
+             i++) {
+            failed = false;
+            j = 20;
+            while (!found && !failed && j > 0) {
+                if (i % j != 0) {
+                    failed = true;
+                }
+                j--;
+                if (j == 1 && !failed) {
+                    found = true;
+                }
+            }
+            if (found) {
+                std::cout << i << std::endl;
+            }
+        }
     }
 };
 
-#endif //PROJECTEULERSOLUTIONS_SOLUTION_6_H
+#endif //PROJECTEULERSOLUTIONS_SOLUTION_5_H

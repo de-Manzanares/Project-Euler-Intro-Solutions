@@ -26,7 +26,7 @@
 #include <vector>
 #include <algorithm>
 
-class Solution_1 {
+class Solution_001 {
 public:
     static void print_solution(std::vector<int> number, int limit)
     {

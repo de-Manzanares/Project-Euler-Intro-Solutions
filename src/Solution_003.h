@@ -25,11 +25,11 @@
 #include <cstddef>
 #include <iostream>
 
-class Solution_3 {
+class Solution_003 {
 public:
     static void print_solution(size_t number)
     {
-        // TODO supply primes with variant of Solution_7
+        // TODO supply primes with variant of Solution_007
         int lengthOfPrimesList = 1000;
         int primes[1000] =
                 {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59,

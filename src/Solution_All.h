@@ -21,15 +21,15 @@
 #define PROJECTEULERSOLUTIONS_SOLUTION_ALL_H
 
 #include "Stopwatch.h"
-#include "Solution_1.h"
-#include "Solution_2.h"
-#include "Solution_3.h"
-#include "Solution_4.h"
-#include "Solution_5.h"
-#include "Solution_6.h"
-#include "Solution_7.h"
-#include "Solution_8.h"
-#include "Solution_9.h"
-#include "Solution_10.h"
+#include "Solution_001.h"
+#include "Solution_002.h"
+#include "Solution_003.h"
+#include "Solution_004.h"
+#include "Solution_005.h"
+#include "Solution_006.h"
+#include "Solution_007.h"
+#include "Solution_008.h"
+#include "Solution_009.h"
+#include "Solution_010.h"
 
 #endif //PROJECTEULERSOLUTIONS_SOLUTION_ALL_H

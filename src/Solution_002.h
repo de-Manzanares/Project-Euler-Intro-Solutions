@@ -24,7 +24,7 @@
 
 #include <vector>
 
-class Solution_2 {
+class Solution_002 {
 public:
     static void print_solution()
     {

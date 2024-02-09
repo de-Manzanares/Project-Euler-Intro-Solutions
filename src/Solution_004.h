@@ -27,7 +27,7 @@
 
 bool checkPalindrome(int x);
 
-class Solution_4 {
+class Solution_004 {
 public:
     static void print_solution()
     {
