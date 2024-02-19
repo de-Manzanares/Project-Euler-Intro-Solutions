@@ -20,6 +20,8 @@
 #ifndef PROJECT_EULER_SOLUTIONS_SOLUTION_011_H
 #define PROJECT_EULER_SOLUTIONS_SOLUTION_011_H
 
+#define DEBUG
+
 #include <fstream>
 
 // TODO we can implement something similar to the fast product in solution 8
@@ -36,7 +38,6 @@ public:
         print_report();
     }
 
-    static void read_file_name();
     static void read_grid();
     static void check_max(int comparator);
     static void check_right();
@@ -72,12 +73,12 @@ void s11::read_grid()
     for (auto& i: GRID) {
         for (int j = 0; j < 20; j++) {
             std::cin >> i[j];
-            if (DEV) {
-                std::cout << i[j] << " ";
-                if (j != 0 && j % 19 == 0) {
-                    std::cout << "\n";
-                }
+#ifdef DEBUG
+            std::cout << i[j] << " ";
+            if (j != 0 && j % 19 == 0) {
+                std::cout << "\n";
             }
+#endif
         }
     }
 }
@@ -98,21 +99,22 @@ void s11::check_right()
     for (row = 0; row < 20; row++) {
         for (column = 0; column < 20 - (RANGE) + 1; column++) {
             int temporary_product = 1;
-            if (DEV) {
-                std::cout << "Check: RIGHT"
-                             "\ti = " << row << "\tcolumn = " << column
-                          << "\nFactors: ";
-            }
+#ifdef DEBUG
+            std::cout << std::setw(15) << std::left << "Check: RIGHT"
+                      << "row = " << std::setw(6) << row
+                      << "column = " << std::setw(6) << column
+                      << "Factors: ";
+#endif
             for (int k = 0; k < RANGE; k++) {
                 temporary_product *= GRID[row][column + k];
-                if (DEV) {
-                    std::cout << GRID[row][column + k] << ", ";
-                }
+#ifdef DEBUG
+                std::cout << GRID[row][column + k] << ", ";
+#endif
             }
             check_max(temporary_product);
-            if (DEV) {
-                std::cout << "\nTemp product: " << temporary_product << "\n\n";
-            }
+#ifdef DEBUG
+            std::cout << "\tTemp product: " << temporary_product << "\n";
+#endif
         }
     }
 }
