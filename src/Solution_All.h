@@ -31,5 +31,6 @@
 #include "Solution_008.h"
 #include "Solution_009.h"
 #include "Solution_010.h"
+#include "Solution_011.h"
 
 #endif //PROJECTEULERSOLUTIONS_SOLUTION_ALL_H
