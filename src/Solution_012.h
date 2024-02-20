@@ -18,6 +18,7 @@
 //  https://projecteuler.net/problem=12
 
 // TODO I bet there's some corners we can cut ...
+// TODO Start utils folder and move suffix select implementation
 
 #ifndef PROJECT_EULER_SOLUTIONS_SOLUTION_012_H
 #define PROJECT_EULER_SOLUTIONS_SOLUTION_012_H
@@ -30,6 +31,8 @@ class Solution_012 {
 public:
     void print_divisor_list();
 
+    std::string suffix_select(uint64_t number);
+
     void print_solution()
     {
         Stopwatch stopwatch;
@@ -40,7 +43,8 @@ public:
             count_factors();
             print_progress();
         }
-        std::cout << "\n\nFirst triangle number with over "
+        std::cout << "The " << suffix_select(iterator)
+                  << " triangle number is the first triangle number with over "
                   << REQ_DIVISORS << " divisors: " << triangleNumber
                   << "\n\n";
         print_divisor_list();
@@ -53,14 +57,14 @@ public:
     void print_progress();
 
 private:
-    u_int64_t REQ_DIVISORS = 500;
-    u_int64_t iterator = 2;
+    uint64_t REQ_DIVISORS = 4000;
+    uint64_t iterator = 2;
     int progressTracker = 1;
-    u_int64_t previousTriangleNumber = 1;
-    u_int64_t triangleNumber{};
+    uint64_t previousTriangleNumber = 1;
+    uint64_t triangleNumber{};
     bool numberFound = false;
-    std::vector<u_int64_t> divisorList{};
-    std::vector<u_int64_t> maxDivisorList{};
+    std::vector<uint64_t> divisorList{};
+    std::vector<uint64_t> maxDivisorList{};
     int divisorCount{};
     int maxDivisorCount{};
 };
@@ -76,7 +80,7 @@ void S12::generate_triangle_number()
 void S12::count_factors()
 {
     divisorCount = 2;
-    for (u_int64_t i = 2;
+    for (uint64_t i = 2;
          static_cast<double>(i) < sqrt(static_cast<double>(triangleNumber)) + 1;
          i++) {
         if (triangleNumber % i == 0) {
@@ -96,7 +100,7 @@ void S12::count_factors()
 
 void Solution_012::print_divisor_list()
 {
-    for (u_int64_t i = 1;
+    for (uint64_t i = 1;
          static_cast<double>(i) < sqrt(static_cast<double>(triangleNumber)) + 1;
          i++) {
         if (triangleNumber % i == 0) {
@@ -112,7 +116,7 @@ void Solution_012::print_divisor_list()
     }
     std::cout << "\n" << divisorList.size() << " divisors:\n";
     std::sort(divisorList.begin(), divisorList.end());
-    for (u_int64_t i = 0; i < divisorList.size(); i++) {
+    for (uint64_t i = 0; i < divisorList.size(); i++) {
         std::cout << divisorList[i] << ", ";
     }
     std::cout << "\n\n";
@@ -125,6 +129,30 @@ void Solution_012::print_progress()
         std::cout << "\tMax factor list size: " << maxDivisorCount << "\n";
         maxDivisorCount = 2;
     }
+}
+
+std::string Solution_012::suffix_select(uint64_t number)
+{
+    uint64_t lastDigit = number % 10;
+    std::string suffix{};
+    std::string num_str{};
+
+    switch (lastDigit) {
+    case 1:
+        suffix = "st";
+        break;
+    case 2:
+        suffix = "nd";
+        break;
+    case 3:
+        suffix = "rd";
+        break;
+    default:
+        suffix = "th";
+    }
+
+    return (std::to_string(number) + suffix);
+
 }
 
 #endif  // PROJECT_EULER_SOLUTIONS_SOLUTION_012_H
