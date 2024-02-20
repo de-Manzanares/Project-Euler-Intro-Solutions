@@ -17,31 +17,31 @@
 //
 //  https://projecteuler.net/problem=12
 
-// TODO terribly inefficient ... 27 minutes!!!
+// TODO I bet there's some corners we can cut ...
 
 #ifndef PROJECT_EULER_SOLUTIONS_SOLUTION_012_H
 #define PROJECT_EULER_SOLUTIONS_SOLUTION_012_H
 
 class Solution_012 {
 public:
-    void print_factor_list();
+    void print_divisor_list();
 
     void print_solution()
     {
+        Stopwatch stopwatch;
+        stopwatch.start();
+
         while (!numberFound && iterator < SIZE_MAX) {
             generate_triangle_number();
             count_factors();
             print_progress();
         }
-        if (numberFound) {
-            std::cout << "\n\nFirst triangle number with over "
-                      << REQ_DIVISORS << " factors: " << triangleNumber
-                      << "\n\n";
-            print_factor_list();
-        }
-        else {
-            std::cout << "Something went wrong\n\n";
-        }
+        std::cout << "\n\nFirst triangle number with over "
+                  << REQ_DIVISORS << " divisors: " << triangleNumber
+                  << "\n\n";
+        print_divisor_list();
+
+        stopwatch.stop();
     }
 
     void generate_triangle_number();
@@ -49,15 +49,16 @@ public:
     void print_progress();
 
 private:
-    size_t REQ_DIVISORS = 500;
-    size_t iterator = 2;
+    u_int64_t REQ_DIVISORS = 500;
+    u_int64_t iterator = 2;
     int progressTracker = 1;
-    size_t previousTriangleNumber = 1;
-    size_t triangleNumber{};
+    u_int64_t previousTriangleNumber = 1;
+    u_int64_t triangleNumber{};
     bool numberFound = false;
-    std::vector<size_t> divisorList{};
+    std::vector<u_int64_t> divisorList{};
+    std::vector<u_int64_t> maxDivisorList{};
+    int divisorCount{};
     int maxDivisorCount{};
-    std::vector<size_t> maxDivisorList{};
 };
 
 using S12 = Solution_012;
@@ -70,39 +71,56 @@ void S12::generate_triangle_number()
 
 void S12::count_factors()
 {
-    divisorList.clear();
-    divisorList.push_back(1);
-    divisorList.push_back(triangleNumber);
-    for (size_t i = 2; i < (triangleNumber/2)+1; i++) {
+    divisorCount = 2;
+    for (u_int64_t i = 2;
+         static_cast<double>(i) < sqrt(static_cast<double>(triangleNumber)) + 1;
+         i++) {
         if (triangleNumber % i == 0) {
-            divisorList.push_back(i);
+            divisorCount += 2;
+        }
+        if (i * i == triangleNumber) {
+            divisorCount++;
+        }
+        if (divisorCount > maxDivisorCount) {
+            maxDivisorCount = divisorCount;
         }
     }
-    if (divisorList.size() > maxDivisorCount) {
-        maxDivisorCount = divisorList.size();
-    }
-    if (divisorList.size() > REQ_DIVISORS) {
-        maxDivisorList = divisorList;
+    if (divisorCount > REQ_DIVISORS) {
         numberFound = true;
     }
 }
 
+void Solution_012::print_divisor_list()
+{
+    for (u_int64_t i = 1;
+         static_cast<double>(i) < sqrt(static_cast<double>(triangleNumber)) + 1;
+         i++) {
+        if (triangleNumber % i == 0) {
+            if (i * i == triangleNumber) {
+                divisorList.push_back(i);
+            }
+            else {
+                divisorList.push_back(i);
+                divisorList.push_back(triangleNumber / i);
+            }
+
+        }
+    }
+    std::cout << "\n" << divisorList.size() << " divisors:\n";
+    std::sort(divisorList.begin(), divisorList.end());
+    for (u_int64_t i = 0; i < divisorList.size(); i++) {
+        std::cout << divisorList[i] << ", ";
+    }
+    std::cout << "\n\n";
+}
+
 void Solution_012::print_progress()
 {
-    if (iterator % 100 == 0) {
-        std::cout << (100 * progressTracker++) << " triangle numbers checked";
+    if (iterator % 1000 == 0) {
+        std::cout << (1000 * progressTracker++) << " triangle numbers checked";
         std::cout << "\tMax factor list size: " << maxDivisorCount << "\n";
         maxDivisorCount = 2;
     }
-}
-
-void Solution_012::print_factor_list()
-{
-    std::sort(maxDivisorList.begin(), maxDivisorList.end());
-    for (int i = 0; i < maxDivisorList.size(); i++) {
-        std::cout << maxDivisorList[i] << ", ";
-    }
-    std::cout << "\n\n";
 }
 
 #endif  // PROJECT_EULER_SOLUTIONS_SOLUTION_012_H
