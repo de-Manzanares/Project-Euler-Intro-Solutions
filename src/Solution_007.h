@@ -28,8 +28,11 @@
 
 class Solution_007 {
 public:
-    static void print_solution(int nthPrime)
+    void print_solution()
     {
+        Stopwatch stopwatch;
+        stopwatch.start();
+        int nthPrime = 10001;
         std::vector<size_t> primeList = {2};
         size_t number;
         bool hasPrimeFactor;
@@ -50,6 +53,7 @@ public:
             generatePrimes = number < SIZE_MAX && primeList.size() < nthPrime;
         }
         std::cout << primeList[nthPrime - 1] << std::endl;
+        stopwatch.stop();
     }
 };
 

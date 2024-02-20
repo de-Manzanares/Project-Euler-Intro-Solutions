@@ -29,8 +29,21 @@ bool checkPalindrome(int x);
 
 class Solution_004 {
 public:
-    static void print_solution()
+    void print_message()
     {
+        std::cout
+                << "A palindromic number reads the same both ways. The "
+                   "largest palindrome made from the product of two 2-digit "
+                   "numbers is 9009 = 91 × 99.\n"
+                << "Find the largest palindrome made from the product of two "
+                   "3-digit numbers.\n";
+    }
+
+    void print_solution()
+    {
+        print_message();
+        Stopwatch stopwatch;
+        stopwatch.start();
         std::vector<int> palindromes;
         int temporaryPalindrome;
         int maxPalindrome;
@@ -46,8 +59,10 @@ public:
             }
         }
         std::cout << maxPalindrome << std::endl;
+        stopwatch.stop();
     }
 };
+
 bool checkPalindrome(int x)
 {
     std::string str_x = std::to_string(x);

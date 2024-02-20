@@ -35,14 +35,21 @@ class Solution_011 {
 public:
     // BEGIN SOLUTION
     //--------------------------------------------------------------------------
-    static void print_solution()
+    void print_solution()
     {
+        Stopwatch stopwatch;;
+
         read_grid();
+
+        stopwatch.start();
+
         check_down();
         check_right();
         check_down_right();
         check_down_left();
         print_report();
+
+        stopwatch.stop();
     }
     // END SOLUTION
     //--------------------------------------------------------------------------
@@ -53,48 +60,36 @@ public:
 
     // primary methods
     //---------------------------------------
-    static void read_grid();
-    static void check_right();
-    static void check_down();
-    static void check_down_right();
-    static void check_down_left();
-    static void print_report();
+    void read_grid();
+    void check_right();
+    void check_down();
+    void check_down_right();
+    void check_down_left();
+    void print_report();
 
     // ancillary methods
     //---------------------------------------
-    static void check_max();
-    static std::string message_select(Direction direction);
-    static void print_factor_list(Direction direction, int p_row, int p_column);
+    void check_max();
+    std::string message_select(Direction direction);
+    void print_factor_list(Direction direction, int p_row, int p_column);
 #ifdef VERBOSE
-    static void print_calculations();
-    static void print_grid();
+    void print_calculations();
+    void print_grid();
 #endif
 
 private:
-    static int RANGE;
-    static int GRID[20][20];
-    static int row;
-    static int column;
-    static int max_location[2];
-    static int max;
-    static Direction direction_found;
-    static Direction direction_checking;
-    static int temporaryProduct;
+    int RANGE = 4;
+    int GRID[20][20]{};
+    int row{};
+    int column{};
+    int max_location[2]{};
+    int max{};
+    Direction direction_found{};
+    Direction direction_checking{};
+    int temporaryProduct{};
 };
 
-// Static variable initialization
-//--------------------------------------
 using s11 = Solution_011;
-
-int s11::RANGE = 4;
-int s11::GRID[20][20];
-int s11::row;
-int s11::column;
-int s11::max;
-int s11::max_location[2];
-s11::Direction s11::direction_found{};
-s11::Direction s11::direction_checking{};
-int s11::temporaryProduct{};
 
 // Method definitions
 //--------------------------------------

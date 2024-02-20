@@ -26,8 +26,10 @@
 
 class Solution_009 {
 public:
-    static void print_solution()
+    void print_solution()
     {
+        Stopwatch stopwatch;
+        stopwatch.start();
         // check all the ways 3 numbers can sum to 1000
         // check if a^2+b^2=c^2
         int SUM = 1000;
@@ -52,6 +54,7 @@ public:
             }
             j++;
         }
+        stopwatch.stop();
     }
 };
 

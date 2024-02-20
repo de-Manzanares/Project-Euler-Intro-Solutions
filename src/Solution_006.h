@@ -26,8 +26,26 @@
 
 class Solution_006 {
 public:
-    static void print_solution()
+    void print_message()
     {
+        std::cout
+                << "The sum of the squares of the first ten natural numbers "
+                   "is,\n1^2 + 2^2 + ... + 10^2 = 385\n"
+                   "The square of the sum of the first ten natural numbers "
+                   "is,\n(1 + 2 + ... + 10)^2 = 55^2 = 3025\n"
+                   "Hence the difference between the sum of the squares of "
+                   "the first ten natural numbers and the square of the sum "
+                   "is \n3025 − 385 = 2640.\n"
+                   "Find the difference between the sum of the squares and "
+                   "the square of the sums of the first one hundred natural "
+                   "numbers.\n";
+    }
+
+    void print_solution()
+    {
+        Stopwatch stopwatch;
+        print_message();
+        stopwatch.start();
         size_t squareOfSum = 0;
         size_t sumOfSquares = 0;
         for (size_t i = 1; i <= 100; i++) {
@@ -38,6 +56,7 @@ public:
                 pow(static_cast<double>(squareOfSum), 2));
 
         std::cout << squareOfSum - sumOfSquares << std::endl;
+        stopwatch.stop();
     }
 };
 

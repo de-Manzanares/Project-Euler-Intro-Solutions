@@ -19,17 +19,27 @@
  * https://projecteuler.net/problem=1
  */
 
+// TODO generalize
+// TODO add prompts
+
 #ifndef PROJECTEULERSOLUTIONS_SOLUTION_1_H
 #define PROJECTEULERSOLUTIONS_SOLUTION_1_H
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include "Stopwatch.h"
 
 class Solution_001 {
 public:
-    static void print_solution(std::vector<int> number, int limit)
+    void print_solution()
     {
+        print_message();
+        std::vector<int> number = {3, 5};
+        int limit = 1000;
+
+        Stopwatch stopwatch;
+        stopwatch.start();
         std::vector<int> multiples;
         int sum = 0;
         for (int i = 0; i < number.size(); i++) {
@@ -47,7 +57,14 @@ public:
             sum += multiples[i];
         }
         std::cout << sum << std::endl;
+        stopwatch.stop();
     }
+    void print_message();
 };
+
+void Solution_001::print_message()
+{
+    std::cout << "Find the sum of all the multiples of 3 or 5 below 1000.\n";
+}
 
 #endif //PROJECTEULERSOLUTIONS_SOLUTION_1_H

@@ -24,8 +24,13 @@
 
 class Solution_010 {
 public:
-    static void print_solution(int ceiling)
+    void print_solution()
     {
+        Stopwatch stopwatch;
+        stopwatch.start();
+        size_t ceiling{};
+        // std::cin >> ceiling;
+        ceiling = 2000000;
         std::vector<size_t> primeList = {2};
         size_t number;
         size_t sum = 0;
@@ -53,6 +58,7 @@ public:
             sum += primeList[i];
         }
         std::cout << sum << std::endl;
+        stopwatch.stop();
     }
 };
 

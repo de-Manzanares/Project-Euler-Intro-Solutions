@@ -1,8 +1,16 @@
-#include "Solution_All.h"
+#include "Solution.h"
+
+// TODO solution prompts and explanations
 
 int main()
 {
-    std::unique_ptr<Solution_012> s12 = std::make_unique<Solution_012>();
-    s12->print_solution();
+    int input = -1;
+    Solution s;
+
+    while (input != 0) {
+        std::cout << "\nEnter a solution number or '0' to exit:\n";
+        std::cin >> input;
+        s.select(input);
+    }
     return 0;
 }

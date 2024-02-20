@@ -26,8 +26,13 @@
 
 class Solution_002 {
 public:
-    static void print_solution()
+    void print_message();
+
+    void print_solution()
     {
+        print_message();
+        Stopwatch stopwatch;
+        stopwatch.start();
         size_t sum = 0;
         std::vector<int> fibonacciSequence = {1, 2};
         std::vector<int> evenFibonacciNumbers;
@@ -41,17 +46,25 @@ public:
             fibonacciSequence.pop_back();
         }
         // Get even Fibonacci numbers
-        for (int i : fibonacciSequence) {
+        for (int i: fibonacciSequence) {
             if (i % 2 == 0) {
                 evenFibonacciNumbers.push_back(i);
             }
         }
         // Sum even Fibonacci numbers
-        for (int evenFibonacciNumber : evenFibonacciNumbers) {
+        for (int evenFibonacciNumber: evenFibonacciNumbers) {
             sum += evenFibonacciNumber;
         }
         std::cout << sum << std::endl;
+        stopwatch.stop();
     }
 };
+
+void Solution_002::print_message()
+{
+    std::cout << "Considering the terms in the Fibonacci sequence whose "
+                 "values do not exceed four million, find the sum of the "
+                 "even-valued terms.\n";
+}
 
 #endif //PROJECTEULERSOLUTIONS_SOLUTION_2_H

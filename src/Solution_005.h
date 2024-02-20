@@ -27,8 +27,10 @@
 
 class Solution_005 {
 public:
-    static void print_solution()
+    void print_solution()
     {
+        Stopwatch stopwatch;
+        stopwatch.start();
         bool found = false;
         bool failed;
         int j;
@@ -51,6 +53,7 @@ public:
                 std::cout << i << std::endl;
             }
         }
+        stopwatch.stop();
     }
 };
 
