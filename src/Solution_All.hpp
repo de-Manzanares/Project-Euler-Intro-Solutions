@@ -20,18 +20,18 @@
 #ifndef PROJECTEULERSOLUTIONS_SOLUTION_ALL_H
 #define PROJECTEULERSOLUTIONS_SOLUTION_ALL_H
 
-#include "Stopwatch.h"
-#include "Solution_001.h"
-#include "Solution_002.h"
-#include "Solution_003.h"
-#include "Solution_004.h"
-#include "Solution_005.h"
-#include "Solution_006.h"
-#include "Solution_007.h"
-#include "Solution_008.h"
-#include "Solution_009.h"
-#include "Solution_010.h"
-#include "Solution_011.h"
-#include "Solution_012.h"
+#include "Stopwatch.hpp"
+#include "Solution_001.hpp"
+#include "Solution_002.hpp"
+#include "Solution_003.hpp"
+#include "Solution_004.hpp"
+#include "Solution_005.hpp"
+#include "Solution_006.hpp"
+#include "Solution_007.hpp"
+#include "Solution_008.hpp"
+#include "Solution_009.hpp"
+#include "Solution_010.hpp"
+#include "Solution_011.hpp"
+#include "Solution_012.hpp"
 
 #endif //PROJECTEULERSOLUTIONS_SOLUTION_ALL_H

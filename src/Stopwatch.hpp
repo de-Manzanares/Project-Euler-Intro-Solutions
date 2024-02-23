@@ -23,7 +23,7 @@
 #include <chrono>
 #include <iostream>
 #include <iomanip>
-#include "util.h"
+#include "util.hpp"
 
 class Stopwatch {
 public:

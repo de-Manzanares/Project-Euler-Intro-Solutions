@@ -17,7 +17,7 @@
 //      You should have received a copy of the GNU General Public License
 //      along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "Selector.h"
+#include "Selector.hpp"
 
 // TODO(dm) solution prompts and explanations
 // TODO(dm) figure out install config -- prompt files and problem data files

@@ -1,4 +1,4 @@
-/// @file Solution.h
+/// @file Solution.hpp
 /// @brief Template for solutions
 
 //  Copyright (c) 2024. de-Manzanares
@@ -23,8 +23,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "Stopwatch.h"
-#include "util.h"
+#include "Stopwatch.hpp"
+#include "util.hpp"
 
 template<typename T>
 class Solution {

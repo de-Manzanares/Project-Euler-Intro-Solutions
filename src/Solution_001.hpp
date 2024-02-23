@@ -1,4 +1,4 @@
-/// @file Solution_001.h
+/// @file Solution_001.hpp
 
 /* Copyright (c) 2024. de-Manzanares
  * Contact: git.in.touch@dmanz.org
@@ -27,7 +27,7 @@
 #include <algorithm>
 #include <fstream>
 #include <string>
-#include "Solution.h"
+#include "Solution.hpp"
 
 class Solution_001 : public Solution<int> {
 public:

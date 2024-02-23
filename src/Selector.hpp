@@ -1,4 +1,4 @@
-/// @file Selector.h
+/// @file Selector.hpp
 /// @brief Selects which subprogram to run
 
 //  Copyright (c) 2024. de-Manzanares
@@ -24,7 +24,7 @@
 #include <iostream>
 #include <limits>
 #include <memory>
-#include "Solution_All.h"
+#include "Solution_All.hpp"
 
 class Selector {
 public:

@@ -23,7 +23,7 @@
 #ifndef PROJECT_EULER_SOLUTIONS_SOLUTION_012_H
 #define PROJECT_EULER_SOLUTIONS_SOLUTION_012_H
 
-#include "Stopwatch.h"
+#include "Stopwatch.hpp"
 #include <cmath>
 #include <algorithm>
 
