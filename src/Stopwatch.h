@@ -23,6 +23,7 @@
 #include <chrono>
 #include <iostream>
 #include <iomanip>
+#include "util.h"
 
 class Stopwatch {
 public:
@@ -32,30 +33,66 @@ public:
 
     void print_readout()
     {
-        std::cout << std::fixed << std::showpoint << std::setprecision(9)
-                  << std::chrono::duration_cast<std::chrono::
-                  nanoseconds>(
-                          end - begin).count()
-                  << " ns" << "\n"
-                  << std::chrono::duration_cast<std::chrono::
-                  microseconds>(
-                          end - begin).count()
-                  << " us" << "\n"
-                  << std::chrono::duration_cast<std::chrono::
-                  milliseconds>(
-                          end - begin).count()
-                  << " ms" << "\n"
-                  << std::chrono::duration_cast<std::chrono::
-                  seconds>(end - begin).count()
-                  << " s" << "\n"
-                  << std::chrono::duration_cast<std::chrono::
-                  minutes>(end - begin).count()
-                  << " min" << "\n";
+        std::cout
+                << insert_commas(
+                        static_cast<size_t>(
+                                std::chrono::duration_cast
+                                        <std::chrono::nanoseconds>
+                                        (end - begin).count()))
+                << " ns" << "\n"
+                << insert_commas(
+                        static_cast<size_t>(
+                                std::chrono::duration_cast
+                                        <std::chrono::microseconds>
+                                        (end - begin).count()))
+                << " us" << "\n"
+                << insert_commas(
+                        static_cast<size_t>(
+                                std::chrono::duration_cast
+                                        <std::chrono::milliseconds>
+                                        (end - begin).count()))
+                << " ms" << "\n"
+                << insert_commas(
+                        static_cast<size_t>(
+                                std::chrono::duration_cast
+                                        <std::chrono::seconds>
+                                        (end - begin).count()))
+                << " s" << "\n"
+                << insert_commas(
+                        static_cast<size_t>(
+                                std::chrono::duration_cast
+                                        <std::chrono::minutes>
+                                        (end - begin).count()))
+                << " min" << "\n";
+    }
+
+    void print_readout_old()
+    {
+        std::cout
+                << std::chrono::duration_cast
+                        <std::chrono::nanoseconds>
+                        (end - begin).count()
+                << " ns" << "\n"
+                << std::chrono::duration_cast
+                        <std::chrono::microseconds>
+                        (end - begin).count()
+                << " us" << "\n"
+                << std::chrono::duration_cast
+                        <std::chrono::milliseconds>
+                        (end - begin).count()
+                << " ms" << "\n"
+                << std::chrono::duration_cast
+                        <std::chrono::seconds>
+                        (end - begin).count()
+                << " s" << "\n"
+                << std::chrono::duration_cast
+                        <std::chrono::minutes>
+                        (end - begin).count()
+                << " min" << "\n";
     }
 
 private:
-    std::chrono::steady_clock::time_point begin;
-    std::chrono::steady_clock::time_point end;
+    std::chrono::steady_clock::time_point begin, end;
 };
 
 #endif //PROJECTEULERSOLUTIONS_STOPWATCH_H

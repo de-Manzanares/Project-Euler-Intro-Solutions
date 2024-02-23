@@ -1,5 +1,5 @@
-/// @file main.cpp
-/// @brief Entry to the subprograms
+/// @file util.cpp
+/// @brief general purpose functions
 
 //  Copyright (c) 2024. de-Manzanares
 //  Contact: git.in.touch@dmanz.org
@@ -17,16 +17,24 @@
 //      You should have received a copy of the GNU General Public License
 //      along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "Selector.h"
+#ifndef SRC_UTIL_H_
+#define SRC_UTIL_H_
 
-// TODO(dm) solution prompts and explanations
-// TODO(dm) figure out install config -- prompt files and problem data files
+#include <string>
 
-int main()
-{
-    while (Selector::keep_goin) {
-        Selector::select();
+std::string insert_commas(size_t num) {
+    std::string string = std::to_string(num);
+    auto length = string.length();
+    if (length > 3) {
+        auto partLength = length % 3;
+        partLength = (partLength == 0) ? 3 : partLength;
+        std::string formatted = string.substr(0, partLength);
+        for (auto i = partLength; i < length; i += 3) {
+            formatted += ',' + string.substr(i, 3);
+        }
+        string = formatted;
     }
-
-    return 0;
+    return string;
 }
+
+#endif  // SRC_UTIL_H_

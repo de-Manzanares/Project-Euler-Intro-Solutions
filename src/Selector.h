@@ -1,4 +1,6 @@
-//  Solution selector
+/// @file Selector.h
+/// @brief Selects which subprogram to run
+
 //  Copyright (c) 2024. de-Manzanares
 //  Contact: git.in.touch@dmanz.org
 //
@@ -16,10 +18,11 @@
 //      along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef PROJECT_EULER_SOLUTIONS_SELECTOR_H
-#define PROJECT_EULER_SOLUTIONS_SELECTOR_H
+#ifndef SRC_SELECTOR_H_
+#define SRC_SELECTOR_H_
 
 #include <iostream>
+#include <limits>
 #include <memory>
 #include "Solution_All.h"
 
@@ -149,4 +152,4 @@ void Selector::select()
     }
 }
 
-#endif //PROJECT_EULER_SOLUTIONS_SELECTOR_H
+#endif  // SRC_SELECTOR_H_
