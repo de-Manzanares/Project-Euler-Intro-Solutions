@@ -28,23 +28,37 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <fstream>
 #include "Stopwatch.h"
 
 class Solution_001 {
 public:
-    void print_solution()
-    {
-        print_message();
-        std::vector<int> number = {3, 5};
-        int limit = 1000;
+    void print_problem();
 
-        Stopwatch stopwatch;
+    void prompt();
+
+    void print_stopwatch_readout();
+
+    void run()
+    {
+        print_problem();
+        prompt();
+        run_algorithm();
+        print_solution();
+        print_stopwatch_readout();
+    }
+
+    void run_algorithm()
+    {
+
         stopwatch.start();
+
         std::vector<int> multiples;
+
         int sum = 0;
-        for (int i = 0; i < number.size(); i++) {
-            for (int j = 1; number[i] * j < limit; j++) {
-                multiples.push_back(number[i] * j);
+        for (int i: number) {
+            for (int j = 1; i * j < limit; j++) {
+                multiples.push_back(i * j);
             }
         }
         for (int i = 0; i < multiples.size(); i++) {
@@ -53,18 +67,93 @@ public:
                     std::unique(multiples.begin(), multiples.end()),
                     multiples.end());
         }
-        for (int i = 0; i < multiples.size(); i++) {
-            sum += multiples[i];
+        for (int multiple: multiples) {
+            sum += multiple;
         }
-        std::cout << sum << std::endl;
+        solution = sum;
+
         stopwatch.stop();
     }
-    void print_message();
+
+    void print_solution() const;
+
+private:
+    std::string line{};
+    std::vector<int> number = {3, 5};
+    int limit = 1000;
+    int solution{};
+    Stopwatch stopwatch;
 };
 
-void Solution_001::print_message()
+void Solution_001::print_problem()
 {
-    std::cout << "Find the sum of all the multiples of 3 or 5 below 1000.\n";
+    std::fstream file("../data/problems/001.txt");
+    if (file.is_open()) {
+
+        while (std::getline(file, line)) {
+            std::cout << line << "\n";
+        }
+    }
+    else {
+        std::cout << "problem text not found";
+    }
+}
+
+void Solution_001::prompt()
+{
+    std::cout << "Multiples of: ";
+    std::getline(std::cin, line);
+    if (!line.empty()) {
+        number.clear();
+        std::stringstream ss(line);
+        int num;
+        while (ss) {
+            ss >> std::ws;
+            if (std::isdigit(ss.peek())) {
+                ss >> num;
+                if (num > 0) {
+                    number.push_back(num);
+                }
+            }
+            else {
+                ss.ignore();
+            }
+        }
+    }
+    std::cout << "Limit: ";
+    std::getline(std::cin, line);
+    if (!line.empty()) {
+        limit = 0;
+        std::stringstream ss(line);
+        int num;
+        while (ss) {
+            ss >> std::ws;
+            if (std::isdigit(ss.peek())) {
+                ss >> num;
+                if (num > 0) {
+                    limit = num;
+                }
+            }
+            else {
+                ss.ignore();
+            }
+        }
+    }
+}
+
+void Solution_001::print_solution() const
+{
+    std::cout <<
+              "\n----------------------------------------\n" <<
+              solution <<
+              "\n----------------------------------------\n" <<
+              "\n";
+}
+
+void Solution_001::print_stopwatch_readout()
+{
+    std::cout << "Algorithm execution time: \n";
+    stopwatch.print_readout();
 }
 
 #endif //PROJECTEULERSOLUTIONS_SOLUTION_1_H

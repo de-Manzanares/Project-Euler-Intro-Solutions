@@ -26,33 +26,33 @@
 
 class Stopwatch {
 public:
-    void start()
+    void start() { begin = std::chrono::steady_clock::now(); }
+
+    void stop() { end = std::chrono::steady_clock::now(); }
+
+    void print_readout()
     {
-        begin = std::chrono::steady_clock::now();
-    }
-    void stop()
-    {
-        end = std::chrono::steady_clock::now();
         std::cout << std::fixed << std::showpoint << std::setprecision(9)
                   << std::chrono::duration_cast<std::chrono::
-                                                nanoseconds>(
+                  nanoseconds>(
                           end - begin).count()
                   << " ns" << "\n"
                   << std::chrono::duration_cast<std::chrono::
-                                                microseconds>(
+                  microseconds>(
                           end - begin).count()
                   << " us" << "\n"
                   << std::chrono::duration_cast<std::chrono::
-                                                milliseconds>(
+                  milliseconds>(
                           end - begin).count()
                   << " ms" << "\n"
                   << std::chrono::duration_cast<std::chrono::
-                                                seconds>(end - begin).count()
+                  seconds>(end - begin).count()
                   << " s" << "\n"
                   << std::chrono::duration_cast<std::chrono::
-                                                minutes>(end - begin).count()
+                  minutes>(end - begin).count()
                   << " min" << "\n";
     }
+
 private:
     std::chrono::steady_clock::time_point begin;
     std::chrono::steady_clock::time_point end;
