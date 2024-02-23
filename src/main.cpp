@@ -12,5 +12,6 @@ int main()
         std::cin >> input;
         s.select(input);
     }
+
     return 0;
 }

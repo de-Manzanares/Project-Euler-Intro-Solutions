@@ -126,7 +126,7 @@ public:
         }
     }
 
-    int ADJACENT_DIGITS;
+    int ADJACENT_DIGITS = 13;
     int index;
     size_t temporaryProduct;
     size_t maxProduct;

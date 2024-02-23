@@ -30,7 +30,8 @@ public:
         stopwatch.start();
         size_t ceiling{};
         // std::cin >> ceiling;
-        ceiling = 2000000;
+        // ceiling = 2000000;
+        ceiling = 100000;
         std::vector<size_t> primeList = {2};
         size_t number;
         size_t sum = 0;

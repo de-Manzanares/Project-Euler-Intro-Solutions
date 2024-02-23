@@ -57,7 +57,7 @@ public:
     void print_progress();
 
 private:
-    uint64_t REQ_DIVISORS = 4000;
+    uint64_t REQ_DIVISORS = 500;
     uint64_t iterator = 2;
     int progressTracker = 1;
     uint64_t previousTriangleNumber = 1;
