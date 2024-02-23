@@ -36,6 +36,7 @@ public:
         run_algorithm();
         print_solution();
         print_stopwatch_readout();
+        press_enter_to_continue();
     }
 
     void print_problem() const;
@@ -43,6 +44,7 @@ public:
     virtual void run_algorithm() = 0;
     void print_solution() const;
     void print_stopwatch_readout();
+    void press_enter_to_continue();
 
 protected:
     Stopwatch stopwatch;
@@ -81,7 +83,14 @@ void Solution<T>::print_stopwatch_readout()
 {
     std::cout << "Algorithm execution time: \n";
     stopwatch.print_readout();
-    stopwatch.print_readout_old();
+    // stopwatch.print_readout_old();
+}
+
+template<typename T>
+void Solution<T>::press_enter_to_continue()
+{
+    std::cout << "\nPress 'ENTER' to continue ...";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 #endif  // SRC_SOLUTION_H_

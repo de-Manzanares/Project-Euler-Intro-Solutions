@@ -1,4 +1,5 @@
 /// @file Solution_001.hpp
+/// @brief Solution 1
 
 /* Copyright (c) 2024. de-Manzanares
  * Contact: git.in.touch@dmanz.org

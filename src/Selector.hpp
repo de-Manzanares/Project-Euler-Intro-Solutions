@@ -30,7 +30,9 @@ class Selector {
 public:
     static bool keep_goin;
     static void select();
+
 private:
+    static void print_menu();
     static std::unique_ptr<Solution_001> ptr_001;
     static std::unique_ptr<Solution_002> ptr_002;
     static std::unique_ptr<Solution_003> ptr_003;
@@ -62,7 +64,7 @@ std::unique_ptr<Solution_012> Selector::ptr_012 = nullptr;
 void Selector::select()
 {
     int number;
-    std::cout << "\nEnter a problem number or '0' to quit\n";
+    print_menu();
     std::cin >> number;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     switch (number) {
@@ -76,10 +78,9 @@ void Selector::select()
         ptr_001.reset();
         break;
     case 2:
-        // ptr_002 = std::make_unique<Solution_002>();
-        // ptr_002->print_solution();
-        // ptr_002.reset();
-        std::cout << "\nCLI not yet implemented, see source for solution\n\n";
+        ptr_002 = std::make_unique<Solution_002>();
+        ptr_002->run();
+        ptr_002.reset();
         break;
     case 3:
         // ptr_003 = std::make_unique<Solution_003>();
@@ -150,6 +151,28 @@ void Selector::select()
         }
         break;
     }
+}
+
+void Selector::print_menu()
+{
+    std::cout <<
+              "\n----------------------------------------\n" <<
+              "Project Euler -- Introductory Problems\n" <<
+              "----------------------------------------\n" <<
+              "\nEnter a problem number or '0' to quit\n\n" <<
+              "  1. Multiples of 3 and 5\n" <<
+              "  2. Even Fibonacci Numbers\n" <<
+              // "003. Largest Prime Factor\n" <<
+              // "004. Largest Palindrome Product\n" <<
+              // "005. Smallest Multiple\n" <<
+              // "006. Sum Square Difference\n" <<
+              // "007. 10001st Prime\n" <<
+              // "008. Largest Product in a Series\n" <<
+              // "009. Special Pythagorean Triplet\n" <<
+              // "010. Summation of Primes\n" <<
+              // "011. Largest Product in a Grid\n" <<
+              // "012. Highly Divisible Triangular Number\n" <<
+              "\nEnter a problem number or '0' to quit\n";
 }
 
 #endif  // SRC_SELECTOR_H_
