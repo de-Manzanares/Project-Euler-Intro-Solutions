@@ -83,10 +83,9 @@ void Selector::select()
         ptr_002.reset();
         break;
     case 3:
-        // ptr_003 = std::make_unique<Solution_003>();
-        // ptr_003->print_solution();
-        // ptr_003.reset();
-        std::cout << "\nCLI not yet implemented, see source for solution\n\n";
+        ptr_003 = std::make_unique<Solution_003>();
+        ptr_003->run();
+        ptr_003.reset();
         break;
     case 4:
         // ptr_004 = std::make_unique<Solution_004>();
@@ -162,7 +161,7 @@ void Selector::print_menu()
               "\nEnter a problem number or '0' to quit\n\n" <<
               "  1. Multiples of 3 and 5\n" <<
               "  2. Even Fibonacci Numbers\n" <<
-              // "003. Largest Prime Factor\n" <<
+              "  3. Largest Prime Factor\n" <<
               // "004. Largest Palindrome Product\n" <<
               // "005. Smallest Multiple\n" <<
               // "006. Sum Square Difference\n" <<
