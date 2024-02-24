@@ -49,18 +49,21 @@ void Solution_001::prompt()
     std::getline(std::cin, line);
     if (!line.empty()) {
         number.clear();
-        std::stringstream ss(line);
-        int num;
-        while (ss) {
-            ss >> std::ws;
-            if (std::isdigit(ss.peek())) {
-                ss >> num;
-                if (num > 0) {
-                    number.push_back(num);
-                }
+        std::string scrubbed_line;
+        for (char c : line) {
+            if (std::isdigit(c) || c == ' ') {
+                scrubbed_line.push_back(c);
             }
-            else {
-                ss.ignore();
+            else if (c == ',') {
+                scrubbed_line.push_back(' ');
+            }
+        }
+        std::stringstream ss(scrubbed_line);
+        size_t num;
+        while (ss) {
+            ss >> num;
+            if (num > 0) {
+                number.push_back(num);
             }
         }
     }
@@ -68,21 +71,20 @@ void Solution_001::prompt()
     std::getline(std::cin, line);
     if (!line.empty()) {
         limit = 0;
-        std::stringstream ss(line);
-        int num;
-        while (ss) {
-            ss >> std::ws;
-            if (std::isdigit(ss.peek())) {
-                ss >> num;
-                if (num > 0) {
-                    limit = num;
-                }
-            }
-            else {
-                ss.ignore();
+        std::string scrubbed_line;
+        for (char c : line) {
+            if (std::isdigit(c)) {
+                scrubbed_line.push_back(c);
             }
         }
+        std::stringstream ss(scrubbed_line);
+        size_t num{};
+        ss >> num;
+        if (num > 0) {
+            limit = num;
+        }
     }
+
     std::cout << "\nCalculating ... \n";
 }
 

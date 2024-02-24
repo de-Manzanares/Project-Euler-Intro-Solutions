@@ -13,5 +13,4 @@ https://projecteuler.net/problem=1
 
 Press 'ENTER' to use the default argument, otherwise you may supply your own.
 Natural numbers only.
-No commas.
 

@@ -20,7 +20,7 @@
  * https://projecteuler.net/problem=3
  */
 
-// TODO supply primes with variant of Solution_007
+//
 
 #ifndef PROJECTEULERSOLUTIONS_SOLUTION_3_H
 #define PROJECTEULERSOLUTIONS_SOLUTION_3_H
@@ -48,7 +48,25 @@ Solution_003::Solution_003()
 
 void Solution_003::prompt()
 {
-
+    std::cout << "Number: ";
+    std::string line;
+    std::getline(std::cin, line);
+    if (!line.empty()) {
+        target_number = 0;
+        std::string scrubbed_line;
+        for (char c : line) {
+            if (std::isdigit(c)) {
+                scrubbed_line.push_back(c);
+            }
+        }
+        std::stringstream ss(scrubbed_line);
+        size_t num{};
+        ss >> num;
+        if (num > 0) {
+            target_number = num;
+        }
+    }
+    std::cout << "\nCalculating ... \n";
 }
 
 void Solution_003::run_algorithm()
