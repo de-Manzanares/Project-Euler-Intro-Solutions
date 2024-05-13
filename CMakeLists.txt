@@ -3,4 +3,4 @@ project(Project-Euler-Solutions)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Project-Euler-Solutions src/Solution_013.cpp)
+add_executable(Project-Euler-Solutions src/Solution_014.cpp)
