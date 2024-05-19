@@ -196,12 +196,12 @@ class Date {
 public:
     Date();
     Date(int _year, int _month, int _day_n);
-    Day set_day();
     Date& operator++();
     Date& operator--();
     bool operator>(Date& rhs);
     bool operator==(Date& rhs);
     int operator-(Date& rhs);
+    Day set_day();
 private:
     Month month;
     int day_n;
@@ -213,6 +213,20 @@ Date::Date()
     month.set_month(5, 2024);
     day_n = 19;
     day = Day::Sunday;
+}
+
+Date::Date(int _year, int _month, int _day_n)
+{
+    month.set_month(_month, _year);
+    if (_day_n < 1) {
+        day_n = 1;
+    }
+    else if (_day_n > month.length()) {
+        day_n = month.length();
+    }
+    else {
+        day_n = _day_n;
+    }
 }
 
 Date& Date::operator++()
@@ -239,13 +253,6 @@ Date& Date::operator--()
     return *this;
 }
 
-bool Date::operator==(Date& rhs)
-{
-    return (month.year() == rhs.month.year()
-            && month.month() == rhs.month.month()
-            && day_n == rhs.day_n);
-}
-
 bool Date::operator>(Date& rhs)
 {
     return (
@@ -256,6 +263,32 @@ bool Date::operator>(Date& rhs)
                             && month.month() == rhs.month.month()
                             && day_n > rhs.day_n
     );
+}
+
+bool Date::operator==(Date& rhs)
+{
+    return (month.year() == rhs.month.year()
+            && month.month() == rhs.month.month()
+            && day_n == rhs.day_n);
+}
+
+int Date::operator-(Date& rhs)
+{
+    int difference = 0;     // difference in days
+    while (month.year() != rhs.month.year()) {
+        --*this;
+        ++difference;
+    }
+    while (month.month() != rhs.month.month()) {
+        --*this;
+        ++difference;
+    }
+    while (day_n != rhs.day_n) {
+        --*this;
+        ++difference;
+    }
+
+    return difference;
 }
 
 Day Date::set_day()
@@ -273,44 +306,9 @@ Day Date::set_day()
     return day;
 }
 
-Date::Date(int _year, int _month, int _day_n)
-{
-    month.set_month(_month, _year);
-    if (_day_n < 1) {
-        day_n = 1;
-    }
-    else if (_day_n > month.length()) {
-        day_n = month.length();
-    }
-    else {
-        day_n = _day_n;
-    }
-    day = set_day();
-}
-
-int Date::operator-(Date& rhs)
-{
-    int difference = 0;     // difference in days
-    Date copy = *this;
-    while (month.year() != rhs.month.year()) {
-        --copy;
-        ++difference;
-    }
-    while (month.month() != rhs.month.month()) {
-        --copy;
-        ++difference;
-    }
-    while (day_n != rhs.day_n) {
-        --copy;
-        ++difference;
-    }
-
-    return difference;
-}
-
 int main()
 {
     Date today;
-    Date future(2024, 05, 21);
+    Date future(2024, 05, 20);
     std::cout << future - today;
 }
