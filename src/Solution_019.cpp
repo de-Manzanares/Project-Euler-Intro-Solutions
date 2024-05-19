@@ -17,6 +17,7 @@
 //
 //  https://projecteuler.net/problem=19
 
+#include "Stopwatch.hpp"
 #include <cstdint>
 #include <iostream>
 
@@ -202,6 +203,10 @@ public:
     bool operator==(Date& rhs);
     int operator-(Date& rhs);
     Day set_day();
+    friend std::ostream& operator<<(std::ostream& os, const Date& date);
+
+    Day day_of_week() { return day; }
+
 private:
     Month month;
     int day_n;
@@ -227,6 +232,7 @@ Date::Date(int _year, int _month, int _day_n)
     else {
         day_n = _day_n;
     }
+    set_day();
 }
 
 Date& Date::operator++()
@@ -275,16 +281,17 @@ bool Date::operator==(Date& rhs)
 int Date::operator-(Date& rhs)
 {
     int difference = 0;     // difference in days
-    while (month.year() != rhs.month.year()) {
-        --*this;
+    Date copy = *this;
+    while (copy.month.year() != rhs.month.year()) {
+        --copy;
         ++difference;
     }
-    while (month.month() != rhs.month.month()) {
-        --*this;
+    while (copy.month.month() != rhs.month.month()) {
+        --copy;
         ++difference;
     }
-    while (day_n != rhs.day_n) {
-        --*this;
+    while (copy.day_n != rhs.day_n) {
+        --copy;
         ++difference;
     }
 
@@ -297,18 +304,43 @@ Day Date::set_day()
     int difference;
     if (reference > *this) {
         difference = reference - *this;
-        day = reference.day + (difference % 7);
+        day = reference.day - (difference % 7);
     }
     else {
         difference = *this - reference;
-        day = reference.day - (difference % 7);
+        day = reference.day + (difference % 7);
     }
     return day;
 }
 
+std::ostream& operator<<(std::ostream& os, const Date& date)
+{
+    os << date.month.year() << '.'
+       << date.month.month() << '.'
+       << date.day_n << " "
+       << date.day;
+
+    return os;
+}
+
 int main()
 {
+    Stopwatch stopwatch;
     Date today;
-    Date future(2024, 05, 20);
-    std::cout << future - today;
+    Date future(1970, 10, 13);
+    std::cout << today << "\n";
+    std::cout << future << "\n";
+    stopwatch.start();
+    int count = 0;    // sunday on first of month count;
+    for (int year = 1901; year < 2001; year++) {
+        for (int month = 1; month < 13; month++) {
+            Date date(year, month, 1);
+            if (date.day_of_week() == Day::Sunday) {
+                count++;
+            }
+        }
+    }
+    stopwatch.stop();
+    std::cout << count << "\n";
+    stopwatch.print_readout();
 }
