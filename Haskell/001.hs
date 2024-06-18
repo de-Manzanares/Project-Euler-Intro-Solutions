@@ -6,7 +6,7 @@
 -}
 
 total :: Integer
-main :: IO ()
+total = sum [i | i <- [1 .. 999], i `mod` 3 == 0 || i `mod` 5 == 0]
 
-total = sum [i | i <- [1..999], i `mod` 3 == 0 || i `mod` 5 == 0]
+main :: IO ()
 main = print total

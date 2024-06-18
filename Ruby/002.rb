@@ -23,4 +23,4 @@ def fun(limit)
   total
 end
 
-puts fun(4 * 10 ** 6) # Ruby uses `**` for exponentiation, not `^`
+puts fun(4 * 10 ** 6)
