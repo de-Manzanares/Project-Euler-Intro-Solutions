@@ -1,14 +1,3 @@
-### Resources
-
-* [Julia](https://docs.julialang.org/en/v1/)
-* [Ruby](http://ruby-doc.com/docs/ProgrammingRuby/)
-
-### File extensions
-
-| Language  | Assembly | C++  | Haskell | Julia | Wolfram | Python | R  | Ruby |
-|-----------|:--------:|:----:|:-------:|:-----:|:-------:|:------:|:--:|:----:|
-| Extension |   .asm   | .cpp |   .hs   |  .jl  |   .nb   |  .py   | .r | .rb  |
-
 ## Table of Solutions
 
 The marks are clickable links to the solution files.
