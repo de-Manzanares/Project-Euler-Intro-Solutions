@@ -49,7 +49,7 @@ count_data <- data.frame(             # a data frame is a tabular structure
 # geom_bar() adds a bar plot to the ggplot object
 # stat = "identity" specifies that we want to use the actual values in the `count` column
 # labs() gives labels to the plot
-# theme_minimal() applys a simple theme to the plot
+# theme_minimal() applies a simple theme to the plot
 ggplot(count_data, aes(x = type, y = count, fill = type)) +
   geom_bar(stat = "identity") +
   labs(title = "Proportion of Even vs. Odd Fibonacci Numbers",

@@ -15,16 +15,16 @@ Calculates the sum of the sequence of even Fibonacci numbers less than a given l
 """
 function f(limit)
     total = 0                   # to store the sum
-    i,j = 1,2                   # to compute the sequence
+    i, j = 1, 2                 # to compute the sequence
 
     while i < limit             # while the nth Fibonacci number is below our limit
         if iseven(i)            # if the nth Fibonacci number is even
             total += i          # add it to our total
         end
-        i,j = j,i+j             # then continue iterating through the sequence
+        i, j = j, i + j         # then continue iterating through the sequence
     end
 
     return total
 end
 
-println(f(4*10^6))              # julia uses `^` for exponentiation, not `**`
+println(f(4 * 10^6))             # julia uses `^` for exponentiation, not `**`
