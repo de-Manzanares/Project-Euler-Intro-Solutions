@@ -26,4 +26,4 @@ function f(n)
     return i
 end
 
-println(f(32))
+println(f(600851475143))
