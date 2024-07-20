@@ -26,9 +26,7 @@ int main() {
     if (is_palindrome(i)) {
       for (ulong j = 100; j < 1000; j++) {
         if (i % j == 0 && i / j < 1000) {
-          v[0] = i;
-          v[1] = j;
-          v[2] = i / j;
+          v = std::vector{i, j, i / j};
           break;
         }
       }
