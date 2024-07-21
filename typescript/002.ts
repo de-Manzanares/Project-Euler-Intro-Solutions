@@ -8,15 +8,15 @@
  */
 
 // linear recursion
-function fibonacci_sum_evens(ni, nj, nk, sum) {
-    const LIMIT = 4 * 10 ** 6;
-    if (nk % 2 === 0) {
-        sum += nk;
-    }
-    if (nj + nk < LIMIT) {
-        sum = fibonacci_sum_evens(nj, nk, nj + nk, sum);
-    }
-    return sum;
+function fibonacci_sum_evens(ni: number, nj: number, nk: number, sum: number) {
+  const LIMIT = 4 * 10 ** 6;
+  if (nk % 2 === 0) {
+    sum += nk;
+  }
+  if (nj + nk < LIMIT) {
+    sum = fibonacci_sum_evens(nj, nk, nj + nk, sum);
+  }
+  return sum;
 }
 
 console.log(fibonacci_sum_evens(0, 0, 1, 0));
